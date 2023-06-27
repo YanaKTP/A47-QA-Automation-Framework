@@ -19,6 +19,7 @@ public class Homework16 extends BaseTest {
         driver.get(url);
         WebElement regestration = driver.findElement(By.cssSelector("[id='hel']"));
         regestration.click();
+        
 
 
         WebElement submitButton = driver.findElement(By.cssSelector("[id='button']"));
