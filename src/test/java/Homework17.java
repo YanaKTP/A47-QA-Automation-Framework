@@ -7,7 +7,7 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist () throws InterruptedException{
 
-        String newSongAddedNotificationText = "Added 1 song into ";
+
 
     openUrl();
     enterEmail("yana.kurenko@testpro.io");
@@ -15,45 +15,51 @@ public class Homework17 extends BaseTest {
     clickLoginButton();
     clickSearchfield("Dark Days");
     viewAllButton();
-    Thread.sleep(2000);
+
     clickOnFirstSong();
     clickOnAddToButton();
     clickOnPlaylist();
 
 
-    Assert.assertTrue(lookForPopUpMessage().contains("newSongAddedNotificationText"));
+    Assert.assertTrue(lookForPopUpMessage().contains("Added 1 song into"));
     Thread.sleep(2000);
 
 
 
     }
 
-    private void clickOnPlaylist() {
+    private void clickOnPlaylist() throws InterruptedException{
         WebElement choosePlaylist = driver.findElement(By.xpath("//*[@id='songResultsWrapper']/header/div[3]/div/section[1]/ul/li[5]"));
         choosePlaylist.click();
+        Thread.sleep(2000);
     }
 
-    private void clickOnAddToButton() {
+    private void clickOnAddToButton() throws InterruptedException{
         WebElement addToButton = driver.findElement(By.cssSelector("[class='btn-add-to']"));
         addToButton.click();
+        Thread.sleep(2000);
     }
 
-    private void clickOnFirstSong() {
+    private void clickOnFirstSong() throws InterruptedException{
         WebElement firstSong = driver.findElement(By.xpath("//*[@id=\"songResultsWrapper\"]/div/div/div[1]/table/tr[1]/td[2]"));
         firstSong.click();
+        Thread.sleep(2000);
+
     }
 
-    private void viewAllButton() {
+    private void viewAllButton() throws InterruptedException {
         WebElement AllButton = driver.findElement(By.cssSelector("button[data-test='view-all-songs-btn']"));
         AllButton.click();
+        Thread.sleep(2000);
 
     }
 
-    private void clickSearchfield(String songName) {
+    private void clickSearchfield(String songName) throws InterruptedException{
         WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
         searchField.click();
         searchField.clear();
         searchField.sendKeys(songName);
+        Thread.sleep(2000);
     }
 
     public String lookForPopUpMessage() {
