@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class BasePage {
+<<<<<<< Updated upstream
     WebDriver driver;
     WebDriverWait wait;
     Actions actions;
@@ -18,12 +19,27 @@ public class BasePage {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(15) );
         actions = new Actions(driver);
+=======
+     WebDriver driver;
+    WebDriverWait wait;
+    Actions actions;
+
+
+    public BasePage(WebDriver givenDriver){
+        driver = givenDriver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        actions = new Actions(driver);
+
+>>>>>>> Stashed changes
     }
 
     public WebElement findElement(By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+<<<<<<< Updated upstream
     public void doubleClick(By locator){
         actions.doubleClick(findElement(locator)).perform();
     }
+=======
+>>>>>>> Stashed changes
 }
