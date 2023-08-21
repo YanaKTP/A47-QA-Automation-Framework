@@ -16,59 +16,73 @@ import java.time.Duration;
 
 
 public class BaseTest {
-    public static WebDriver driver = null;
-    public static WebDriverWait wait = null;
-    public static Actions actions = null;
-    public static String url = "https://qa.koel.app/";
-    @BeforeSuite
-    static void setupClass() {
-        WebDriverManager.chromedriver().setup();
-    }
+//    public static WebDriver driver = null;
+//    public static WebDriverWait wait = null;
+//    public static Actions actions = null;
+//    public static String url = "https://qa.koel.app/";
+//    @BeforeSuite
+//    static void setupClass() {
+//        WebDriverManager.chromedriver().setup();
+//    }
+//
+//    @BeforeMethod
+//    @Parameters({"BaseURL"})
+//    public void launchBrowser(String BaseURL){
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--remote-allow-origins=*");
+//        driver = new ChromeDriver(options);
+//        url = BaseURL;
+//        driver.get(url);
+//        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        actions = new Actions(driver);
+//    }
+//    @AfterMethod
+//    public void quitBrowser(){
+//        driver.quit();
+//    }
+//
+//    @DataProvider (name = "LoginProviders")
+//    public static Object [][] getLoginData(){
+//        return new Object[][]{
+//                {"yana.kurenko@testpro.io", "te$t$tudent"}
+//        };
+//
+//    }
+//
+//    public static void enterEmail (String email){
+//        WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type = 'email']")));
+//        emailInput.click();
+//        emailInput.clear();
+//        emailInput.sendKeys(email);
+//    }
+//
+//    public static void enterPassword (String password){
+//        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type = 'password']")));
+//        passwordInput.click();
+//        passwordInput.clear();
+//        passwordInput.sendKeys(password);
+//    }
+//
+//    public static void clickLoginButton (){
+//        WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type = 'submit']")));
+//        loginButton.click();
+//
+//
+//
+//    }
 
-    @BeforeMethod
-    @Parameters({"BaseURL"})
-    public void launchBrowser(String BaseURL){
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-        url = BaseURL;
-        driver.get(url);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    WebDriver driver;
+    WebDriverWait wait;
+    Actions actions;
+
+    public BasePage(WebDriver givenDriver){
+        driver = givenDriver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         actions = new Actions(driver);
     }
-    @AfterMethod
-    public void quitBrowser(){
-        driver.quit();
-    }
 
-    @DataProvider (name = "LoginProviders")
-    public static Object [][] getLoginData(){
-        return new Object[][]{
-                {"yana.kurenko@testpro.io", "te$t$tudent"}
-        };
-
-    }
-
-    public static void enterEmail (String email){
-        WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type = 'email']")));
-        emailInput.click();
-        emailInput.clear();
-        emailInput.sendKeys(email);
-    }
-
-    public static void enterPassword (String password){
-        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type = 'password']")));
-        passwordInput.click();
-        passwordInput.clear();
-        passwordInput.sendKeys(password);
-    }
-
-    public static void clickLoginButton (){
-        WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type = 'submit']")));
-        loginButton.click();
-
-
-
+    public WebElement findElement (By locator){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
 
