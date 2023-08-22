@@ -57,18 +57,7 @@ public class BaseTest {
     }
 
 
-    @AfterMethod
-    public void quitBrowser(){
-        driver.quit();
-    }
 
-    @DataProvider (name = "LoginProviders")
-    public static Object [][] getLoginData(){
-        return new Object[][]{
-                {"yana.kurenko@testpro.io", "te$t$tudent"}
-        };
-
-    }
     public static void enterEmail (String email){
         WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type = 'email']")));
         emailInput.click();

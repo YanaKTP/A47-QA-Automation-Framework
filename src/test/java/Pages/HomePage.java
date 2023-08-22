@@ -10,10 +10,6 @@ public class HomePage extends BasePage{
     public HomePage(WebDriver givenDriver){
         super(givenDriver);
     }
-
-
-
-
     By userAvatar = By.cssSelector("img.avatar");
 
     public WebElement getUserAvatar(){

@@ -19,19 +19,10 @@ public class BasePage {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(15) );
         actions = new Actions(driver);
+    }
 
-
-
-
-
-    public WebElement findElement(By locator){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated())
-
-        }
-
-    public void doubleClick(By locator){
-            actions.doubleClick(findElement(locator)).perform();
-        }
+    public  WebElement findElement(By locator){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 }
 
