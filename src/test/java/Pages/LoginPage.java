@@ -25,6 +25,7 @@ public class LoginPage extends BasePage{
         provideEmail("yana.kurenko@testpro.io");
         providePassword("te$t$tudent");
         clickSubmit();
+        
     }
 }
 
