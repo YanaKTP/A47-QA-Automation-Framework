@@ -1,7 +1,7 @@
-<<<<<<< Updated upstream
-=======
+
+
 import Pages.BasePage;
->>>>>>> Stashed changes
+
 import Pages.HomePage;
 import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ import java.time.Duration;
 
 public class LoginTests extends BaseTest {
     @Test
-<<<<<<< Updated upstream
+
 //    public void LoginEmptyEmailPasswordTest() {
 //
 ////      Added ChromeOptions argument below to fix websocket error
@@ -36,19 +36,7 @@ public class LoginTests extends BaseTest {
         loginPage.login();
 
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-=======
 
-    public void loginValidPasswordTest(){
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
 
-//        loginPage.provideEmail("yana.kurenko@testpro.io");
-//        loginPage.providePassword("te$t$tudent");
-//        loginPage.clickSubmit();
-        loginPage.login();
-
-        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-
->>>>>>> Stashed changes
     }
 }
