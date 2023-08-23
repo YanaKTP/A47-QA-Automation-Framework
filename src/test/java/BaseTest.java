@@ -16,17 +16,22 @@ import java.time.Duration;
 
 
 
+
+
 public class BaseTest {
+
     public static WebDriver driver = null;
     public static WebDriverWait wait = null;
     public static Actions actions = null;
     public static String url = null;
+
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
+
     @Parameters({"BaseURL"})
     public void launchBrowser(String BaseURL){
         ChromeOptions options = new ChromeOptions();
@@ -40,21 +45,20 @@ public class BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
         url = BaseURL;
-        driver.get(url);
-    }
+        driver.get(url);}
+
     @AfterMethod
     public void quitBrowser(){
         driver.quit();
     }
 
 
+
     @DataProvider (name = "LoginProviders")
     public static Object [][] getLoginData(){
         return new Object[][]{
                 {"yana.kurenko@testpro.io", "te$t$tudent"}
-        };
-
-    }
+        };}
 
 
 
@@ -66,19 +70,21 @@ public class BaseTest {
     }
 
     public static void enterPassword (String password){
-        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type = 'password']")));
-        passwordInput.click();
-        passwordInput.clear();
-        passwordInput.sendKeys(password);
+        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type = 'password']")));}
+
+    public void clickLoginButton() {
+        WebElement logInButton = driver.findElement(By.cssSelector("button[type = 'submit']"));
+        logInButton.click();
     }
 
-    public static void clickLoginButton (){
-        WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type = 'submit']")));
-        loginButton.click();
 
 
-
+    public static void openUrl() {
+        String url = "https://qa.koel.app/";
+        driver.get(url);
     }
+
+
 
 
 }
